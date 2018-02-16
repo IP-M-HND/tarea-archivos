@@ -14,6 +14,9 @@ namespace Tarea3
     {
         ManejadorFichero mFich = new ManejadorFichero();
         bool editar = false;
+
+        List<Indices> indices = new List<Indices>();
+
         public Form1()
         {
             InitializeComponent();
@@ -27,9 +30,21 @@ namespace Tarea3
             //{
             //    dataGridView1.Rows.Add(item[0],item[1],item[2]);
             //}
-            mFich.LeerArchivo(ref dataGridView1);
+            indices=mFich.LeerArchivoIndices();
+            cargarGrid(mFich.LeerArchivoDatos(indices));
         }
 
+        private void cargarGrid(List<ArchivoDatos> _datos)
+        {
+            foreach (ArchivoDatos rw in _datos)
+            {
+                dataGridView1.Rows.Add(rw.id,rw.nombre,rw.departamento);
+            }
+        }
+
+
+        //al dat doble click en un elemento de la grilla cambiamos el valor de editar a true para que 
+        //ediar este activo ademas pasamos los valores de la fila seleccionada a los textbox
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
