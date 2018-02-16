@@ -80,6 +80,8 @@ namespace Tarea3
             return _data;
         }
 
+
+
         private ArchivoDatos encontrar_registro(int fila)
         {
             ArchivoDatos dat = new ArchivoDatos("","","");
@@ -92,7 +94,7 @@ namespace Tarea3
                 string linea = reader.ReadLine();
                 if (linea != "")
                 {
-                    ArchivoDatos tp = new ArchivoDatos(linea.Substring(0, 3).Replace('-', ' '),
+                    ArchivoDatos tp = new ArchivoDatos(linea.Substring(0, 4).Replace('-', ' '),
                                                         linea.Substring(4, 25).Replace('-', ' '),
                                                         linea.Substring(29, 10).Replace('-', ' '));
                     dat = new ArchivoDatos(tp.id, tp.nombre, tp.departamento);

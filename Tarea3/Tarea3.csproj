@@ -85,5 +85,14 @@
   <ItemGroup>
     <None Include="Resources\Save_32px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add File_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete File_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
