@@ -191,7 +191,7 @@ namespace Tarea3
             try
             {
                 string[] tp = new string[_tp.Count()];
-                for (int i = 0; i <= _tp.Count(); i++)
+                for (int i = 0; i < _tp.Count(); i++)
                 {
                     tp[i] = Environment.NewLine + _tp[i].indice + "," + _tp[i].departamento + "," + _tp[i].id_archvio;
                 }

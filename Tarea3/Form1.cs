@@ -37,6 +37,7 @@ namespace Tarea3
 
         private void cargarGrid(List<ArchivoDatos> _datos)
         {
+            dataGridView1.Rows.Clear();
             foreach (ArchivoDatos rw in _datos)
             {
                 dataGridView1.Rows.Add(rw.id,rw.nombre,rw.departamento);
@@ -95,7 +96,7 @@ namespace Tarea3
             {
                 mFich.GuardarArchivo(datos);
             }
-
+            btn_Nuevo_Click(sender,e);
             Form1_Load(sender,e);
         }
 
