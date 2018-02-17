@@ -8,7 +8,7 @@ namespace Tarea3
 {
     class Indices
     {
-        public Indices(int _id_archivo,string _departamento,int _indice)
+        public Indices(int _indice,string _departamento,int _id_archivo)
         {
             this.id_archvio = _id_archivo;
             this.departamento = _departamento;

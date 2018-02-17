@@ -34,13 +34,6 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDepartamento = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_Nuevo = new System.Windows.Forms.ToolStripButton();
             this.btn_Guardar = new System.Windows.Forms.ToolStripButton();
@@ -48,6 +41,13 @@
             this.btn_BuscarID = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_BuscarDepto = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDepartamento = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -105,6 +105,85 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_Nuevo,
+            this.btn_Guardar,
+            this.btn_Buscar,
+            this.btnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 17);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(630, 48);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btn_Nuevo
+            // 
+            this.btn_Nuevo.AutoSize = false;
+            this.btn_Nuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Nuevo.Image = global::Tarea3.Properties.Resources.Add_File_32px;
+            this.btn_Nuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btn_Nuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Nuevo.Name = "btn_Nuevo";
+            this.btn_Nuevo.Size = new System.Drawing.Size(42, 42);
+            this.btn_Nuevo.Text = "Nuevo Rejistro";
+            this.btn_Nuevo.Click += new System.EventHandler(this.btn_Nuevo_Click);
+            // 
+            // btn_Guardar
+            // 
+            this.btn_Guardar.AutoSize = false;
+            this.btn_Guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Guardar.Image = global::Tarea3.Properties.Resources.Save_32px;
+            this.btn_Guardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btn_Guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Guardar.Name = "btn_Guardar";
+            this.btn_Guardar.Size = new System.Drawing.Size(42, 42);
+            this.btn_Guardar.Text = "Guardar Cambios";
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
+            // 
+            // btn_Buscar
+            // 
+            this.btn_Buscar.AutoSize = false;
+            this.btn_Buscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Buscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_BuscarID,
+            this.btn_BuscarDepto});
+            this.btn_Buscar.Image = global::Tarea3.Properties.Resources.Search_32px;
+            this.btn_Buscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btn_Buscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(48, 42);
+            this.btn_Buscar.Text = "Guardar Cambios";
+            this.btn_Buscar.ButtonClick += new System.EventHandler(this.btn_Buscar_ButtonClick);
+            // 
+            // btn_BuscarID
+            // 
+            this.btn_BuscarID.Name = "btn_BuscarID";
+            this.btn_BuscarID.Size = new System.Drawing.Size(209, 22);
+            this.btn_BuscarID.Text = "Buscar Por ID";
+            this.btn_BuscarID.Click += new System.EventHandler(this.btn_BuscarID_Click);
+            // 
+            // btn_BuscarDepto
+            // 
+            this.btn_BuscarDepto.Name = "btn_BuscarDepto";
+            this.btn_BuscarDepto.Size = new System.Drawing.Size(209, 22);
+            this.btn_BuscarDepto.Text = "Buscar Por Departamento";
+            this.btn_BuscarDepto.Click += new System.EventHandler(this.btn_BuscarDepto_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = false;
+            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete.Image = global::Tarea3.Properties.Resources.Delete_File_32px;
+            this.btnDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(42, 42);
+            this.btnDelete.Text = "Eliminar Registro";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -155,79 +234,6 @@
             this.txtId.Size = new System.Drawing.Size(116, 21);
             this.txtId.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtId, "ID del Registro");
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.AutoSize = false;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_Nuevo,
-            this.btn_Guardar,
-            this.btn_Buscar,
-            this.btnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 17);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(630, 48);
-            this.toolStrip1.TabIndex = 6;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btn_Nuevo
-            // 
-            this.btn_Nuevo.AutoSize = false;
-            this.btn_Nuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Nuevo.Image = global::Tarea3.Properties.Resources.Add_File_32px;
-            this.btn_Nuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btn_Nuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Nuevo.Name = "btn_Nuevo";
-            this.btn_Nuevo.Size = new System.Drawing.Size(42, 42);
-            this.btn_Nuevo.Text = "Nuevo Rejistro";
-            // 
-            // btn_Guardar
-            // 
-            this.btn_Guardar.AutoSize = false;
-            this.btn_Guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Guardar.Image = global::Tarea3.Properties.Resources.Save_32px;
-            this.btn_Guardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btn_Guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Guardar.Name = "btn_Guardar";
-            this.btn_Guardar.Size = new System.Drawing.Size(42, 42);
-            this.btn_Guardar.Text = "Guardar Cambios";
-            // 
-            // btn_Buscar
-            // 
-            this.btn_Buscar.AutoSize = false;
-            this.btn_Buscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Buscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_BuscarID,
-            this.btn_BuscarDepto});
-            this.btn_Buscar.Image = global::Tarea3.Properties.Resources.Search_32px;
-            this.btn_Buscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btn_Buscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(48, 42);
-            this.btn_Buscar.Text = "Guardar Cambios";
-            // 
-            // btn_BuscarID
-            // 
-            this.btn_BuscarID.Name = "btn_BuscarID";
-            this.btn_BuscarID.Size = new System.Drawing.Size(209, 22);
-            this.btn_BuscarID.Text = "Buscar Por ID";
-            // 
-            // btn_BuscarDepto
-            // 
-            this.btn_BuscarDepto.Name = "btn_BuscarDepto";
-            this.btn_BuscarDepto.Size = new System.Drawing.Size(209, 22);
-            this.btn_BuscarDepto.Text = "Buscar Por Departamento";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSize = false;
-            this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::Tarea3.Properties.Resources.Delete_File_32px;
-            this.btnDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(42, 42);
-            this.btnDelete.Text = "Eliminar Registro";
             // 
             // Form1
             // 

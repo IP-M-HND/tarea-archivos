@@ -58,9 +58,7 @@ namespace Tarea3
         public List<ArchivoDatos> LeerArchivoDatos(List<Indices> _indices)
         {
             List<ArchivoDatos> _data = new List<ArchivoDatos>();
-            //DataTable dt = new DataTable();
-           
-
+          
             try
             {
 
@@ -82,7 +80,7 @@ namespace Tarea3
 
 
 
-        private ArchivoDatos encontrar_registro(int fila)
+        public ArchivoDatos encontrar_registro(int fila)
         {
             ArchivoDatos dat = new ArchivoDatos("","","");
             StreamReader reader;
@@ -94,9 +92,9 @@ namespace Tarea3
                 string linea = reader.ReadLine();
                 if (linea != "")
                 {
-                    ArchivoDatos tp = new ArchivoDatos(linea.Substring(0, 4).Replace('-', ' '),
-                                                        linea.Substring(4, 25).Replace('-', ' '),
-                                                        linea.Substring(29, 10).Replace('-', ' '));
+                    ArchivoDatos tp = new ArchivoDatos(linea.Substring(0, 4).Replace('-', ' ').Trim(),
+                                                        linea.Substring(4, 25).Replace('-', ' ').Trim(),
+                                                        linea.Substring(29, 10).Replace('-', ' ').Trim());
                     dat = new ArchivoDatos(tp.id, tp.nombre, tp.departamento);
                 }
                 if (++i==fila) break;
@@ -105,33 +103,107 @@ namespace Tarea3
             return dat;
         }
 
-        private void GuardarArchivo()
+        private int encontrar_registro_fila(ArchivoDatos dat)
         {
-            //try
-            //{
-            //    StreamWriter writer;
-            //    if (_path == "")
-            //    {
-            //        NuevoArchivo(false);
-            //    }
-            //    writer = new StreamWriter(_path);
-            //    writer.Write(txtContenido.Text);
-            //    writer.Close();
-            //}
-            //catch (IOException ex)
-            //{
-            //    MessageBox.Show("Erro al intentar escribir el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            StreamReader reader;
+            int nFila = 0;
 
-            //}
+           
+            reader = new StreamReader(_path2);
+
+            while (!reader.EndOfStream)
+            {
+
+                string linea = reader.ReadLine();
+                ++nFila;
+                if (linea != "")
+                {
+                    ArchivoDatos tp = new ArchivoDatos(linea.Substring(0, 4).Replace('-', ' '),
+                                                        linea.Substring(4, 25).Replace('-', ' '),
+                                                        linea.Substring(29, 10).Replace('-', ' '));
+                    
+                    if (dat==tp)
+                    {
+                        break;
+                    }
+                }
+                
+            }
+
+            reader.Close();
+            return nFila;
         }
 
-        private void NuevoArchivo(bool vaciar)
+        private string ValidarPrametro(string s, int c)
         {
-            //saveFile.Title = "Nuevo Archivo";
-            //saveFile.Filter = "Archivos de Texto (*.txt)|*.txt";
-            //saveFile.ShowDialog();
-            //_path = saveFile.FileName;
-            //if (vaciar == true) { txtContenido.Clear(); }
+            string res = "";
+            if (s.Length > c)
+            {
+                res = s.Substring(0, c);
+            }
+            else
+            {
+                res = s;
+                for (int i = 0; i < c; i++)
+                {
+                    res += "-";
+                    if (res.Length == c) { break; }
+                }
+            }
+            return res;
         }
+
+        public void GuardarArchivo(ArchivoDatos ad)
+        {
+
+
+            try
+            {
+                StreamWriter escrito = File.AppendText(_path2);
+                escrito.Write(Environment.NewLine + ValidarPrametro(ad.id,4) + ValidarPrametro(ad.nombre,25) + ValidarPrametro(ad.departamento,10));
+                escrito.Flush();
+                escrito.Close();
+
+                
+
+                StreamWriter writeIndices = File.AppendText(_path1);
+                writeIndices.Write(Environment.NewLine + encontrar_registro_fila(ad) + "," + ad.departamento + "," + ad.id );
+                writeIndices.Flush();
+                writeIndices.Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error: "+ex.Message);
+            }
+
+        }
+
+        public void ActualizarArchivo(int id,ArchivoDatos datos)
+        {
+            var lineas = File.ReadAllLines(_path2);
+            lineas[id-1] = ValidarPrametro(datos.id,4) +ValidarPrametro(datos.nombre,25) +ValidarPrametro(datos.departamento,10);
+            File.WriteAllLines(_path2,lineas);
+        }
+
+        public void EliminarReg(ref List<Indices> _tp)
+        {
+            try
+            {
+                string[] tp = new string[_tp.Count()];
+                for (int i = 0; i <= _tp.Count(); i++)
+                {
+                    tp[i] = Environment.NewLine + _tp[i].indice + "," + _tp[i].departamento + "," + _tp[i].id_archvio;
+                }
+
+                File.WriteAllLines(_path1, tp);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }
